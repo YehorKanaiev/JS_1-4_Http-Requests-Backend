@@ -1,0 +1,30 @@
+.wrapper {
+    max-width: 1200px;
+    padding: 0 50px;
+    margin: 0 auto;
+    background-color: RGBA(0,127,0,0.3);
+    min-height: 100vh;
+    border-right: 4px dashed #005000;
+    border-left: 4px dashed #005000;
+    outline: 7px solid RGBA(0,127,0,0.3);
+}
+
+#usersTable {
+    padding: 25px 0;
+}
+
+@media(max-width: 1440px) {
+    .wrapper {
+        max-width: 984px;
+        padding: 0 20px;
+    }
+}
+
+@media(max-width: 1024px) {
+    .wrapper {
+        border: none;
+        outline: none;
+        max-width: 1024px;
+        margin: 0;
+    }
+}

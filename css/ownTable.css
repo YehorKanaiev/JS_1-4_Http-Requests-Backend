@@ -1,0 +1,69 @@
+
+.ownTable__table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.ownTable__tableNav {
+    display: flex;
+    padding-bottom: 50px;
+}
+
+.ownTable__search {
+    width: 300px;
+}
+
+.ownTable__addButton {
+    margin-left: 50px;
+    width: 200px;
+    height: 50px;
+}
+
+.ownTable__thead {}
+
+.ownTable__th {
+    font-size: 18px;
+    padding: 10px;
+    border: 1px solid #555555;
+    background-color: #999999;
+    text-transform: capitalize;
+}
+
+.ownTable__th:hover {
+    background-color: #777777;
+}
+
+.ownTable__tbody {}
+
+.ownTable__tbody .ownTable__tr:nth-child(even) {
+    background-color: #cccccc;
+}
+
+.ownTable__tbody .ownTable__tr:nth-child(odd) {
+    background-color: #ccccbb;
+}
+
+.ownTable__tbody .ownTable__tr:hover {
+    background-color: #888888;
+}
+
+.ownTable__tr {}
+
+.ownTable__td {
+    font-size: 16px;
+    padding: 5px 7px;
+    border: 1px solid #555555;
+}
+
+.ownTable__deleteButton {
+    border: 2px solid rgba(0,0,0,0);
+    background-color: #ff0000;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.ownTable__deleteButton:active {
+    border: 2px solid #aa0000;
+    background-color: #ff0000;
+}
