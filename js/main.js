@@ -1,4 +1,3 @@
-
 const config1 = {
     parent: '#usersTable',
     columns: [
@@ -24,7 +23,9 @@ async function DataTable(config, data) {
         if (config.apiUrl === undefined) {
             throw new Error("There is no data to create a table.");
         }
-        data = await getUserData(config.apiUrl).then((value) => {return value;})
+        data = await getUserData(config.apiUrl).then((value) => {
+            return value;
+        })
         let parent = config.parent;
         let url = config.apiUrl;
         config = {
@@ -35,17 +36,17 @@ async function DataTable(config, data) {
         fromServer = true;
     }
 
-    const parentDiv = document.getElementById(config.parent.replace("#",""));
+    const parentDiv = document.getElementById(config.parent.replace("#", ""));
 
     // adds a search and add block
     const tableNav = document.createElement("div");
     tableNav.classList.add("ownTable__tableNav");
     parentDiv.appendChild(tableNav)
 
-    const inputField = document.createElement("input");
-    inputField.setAttribute("type", "text");
-    inputField.classList.add("ownTable__search");
-    tableNav.appendChild(inputField);
+    const searchField = document.createElement("input");
+    searchField.setAttribute("type", "text");
+    searchField.classList.add("ownTable__search");
+    tableNav.appendChild(searchField);
 
     const addButton = document.createElement("button");
     addButton.setAttribute("type", 'button');
@@ -115,23 +116,30 @@ async function DataTable(config, data) {
                     deleteButton.innerHTML = "Delete";
                     cellData.appendChild(deleteButton);
                     if (fromServer) {
-                        deleteButton.addEventListener("click", () => {return deleteRow(table, config, data, config.apiUrl, data[i]["id"])})
+                        deleteButton.addEventListener("click", () => {
+                            return deleteRow(table, config, data, config.apiUrl, data[i]["id"])
+                        })
                     } else {
-                        deleteButton.addEventListener("click", () => {return deleteRow(table, config, data,null, data[i]["id"])})
+                        deleteButton.addEventListener("click", () => {
+                            return deleteRow(table, config, data, null, data[i]["id"])
+                        })
                     }
                 }
             }
         }
     }
+
+    // adds search function
+    searchField.addEventListener("input", () => search(table, searchField.value))
 }
 
 
-async function getUserData (url) {
+async function getUserData(url) {
     let response = await fetch(url, {
         method: 'GET',
     });
     if (response.status !== 200) {
-        return  Promise.reject("Something went wrong");
+        return Promise.reject("Something went wrong");
     }
     let responseJSON = await response.json();
     let users = [];
@@ -165,7 +173,7 @@ async function deleteRow(table, config, data, url, id) {
         console.log("here")
         for (let i = 0; i < data.length; i++) {
             if (data[i]["id"] === id) {
-                data.splice(i,1);
+                data.splice(i, 1);
             }
         }
         // deletes old table and create a new table
@@ -184,12 +192,23 @@ async function deleteRow(table, config, data, url, id) {
     await DataTable(config)
 }
 
-// ============================== Search ========================================
-/*
-window.onload = () => {
-    searchField.addEventListener("input", () => {
 
+function search(table, request) {
+    request = request.toLowerCase().split(" ");
+    let rows = table.querySelector('.ownTable__tbody').childNodes;
+    rows.forEach((row) => {
+        let rowData = ""
+        let isValid = true;
+        row.childNodes.forEach((cell) => {
+            rowData += cell.innerHTML.toLowerCase() + " ";
+        })
+        for (let word of request) {
+            if (!rowData.includes(word)) isValid = false;
+        }
+        isValid ? row.style.display = "table-row" : row.style.display = "none"
     })
 }
-*/
+
+
+
 
