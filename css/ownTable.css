@@ -12,12 +12,22 @@
 
 .ownTable__search {
     width: 300px;
+    font-size: 18px;
 }
 
 .ownTable__addButton {
     margin-left: 50px;
     width: 200px;
     height: 50px;
+    background-color: #aacc66;
+    color:white;
+    font-size: 18px;
+    border: 2px solid #88aa44;
+}
+
+.ownTable__addButton:hover {
+    background-color: #88aa44;
+    cursor: pointer;
 }
 
 .ownTable__thead {}
@@ -26,7 +36,7 @@
     font-size: 18px;
     padding: 10px;
     border: 1px solid #555555;
-    background-color: #999999;
+    background-color: #aacc66;
     text-transform: capitalize;
 }
 
@@ -37,15 +47,15 @@
 .ownTable__tbody {}
 
 .ownTable__tbody .ownTable__tr:nth-child(even) {
-    background-color: #cccccc;
+    background-color: #ccd8c2;
 }
 
 .ownTable__tbody .ownTable__tr:nth-child(odd) {
-    background-color: #ccccbb;
+    background-color: #dce1d9;
 }
 
 .ownTable__tbody .ownTable__tr:hover {
-    background-color: #888888;
+    background-color: #bbbbbb;
 }
 
 .ownTable__tr {}
@@ -58,12 +68,30 @@
 
 .ownTable__deleteButton {
     border: 2px solid rgba(0,0,0,0);
-    background-color: #ff0000;
+    background-color: #ff7777;
     font-size: 1rem;
     color: #ffffff;
 }
 
+.ownTable__deleteButton:hover {
+    background-color: #ff0000;
+    cursor: pointer;
+}
+
 .ownTable__deleteButton:active {
     border: 2px solid #aa0000;
-    background-color: #ff0000;
+    background-color: #ff4444;
+}
+
+.ownTable__addInput {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0;
+    border-width: 1px;
+}
+
+.ownTable__addInputEmpty  {
+    border-color: red;
+    border-width: 2px;
 }
